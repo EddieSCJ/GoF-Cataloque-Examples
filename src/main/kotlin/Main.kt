@@ -1,7 +1,29 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import composite.graphics.Line
+import composite.graphics.Picture
+import composite.graphics.Rectangle
+import composite.graphics.Text
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main(args: Array<String>) {
+    val picture = Picture()
+    val firstRectangle = Rectangle()
+
+    firstRectangle.add(Text())
+    firstRectangle.add(Line())
+    firstRectangle.add(Text())
+    firstRectangle.add(Line())
+    firstRectangle.add(Text())
+    firstRectangle.add(Line())
+
+    val secondRectangle = Rectangle()
+    secondRectangle.add(firstRectangle)
+    secondRectangle.add(Line())
+    secondRectangle.add(Text())
+    secondRectangle.add(Line())
+
+    picture.add(firstRectangle)
+    picture.add(secondRectangle)
+
+    println(picture.draw())
+
+
 }

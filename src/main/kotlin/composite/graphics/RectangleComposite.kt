@@ -2,17 +2,18 @@ package composite.graphics
 
 import java.lang.StringBuilder
 
-class Rectangle : Graphic() {
+class RectangleComposite(override val parent: GraphicComponent? = null, override val boundLimit: Int = 50) : GraphicComposite(parent, boundLimit) {
 
     override fun draw() : String {
-        var finalValue = StringBuilder()
+        val finalValue = StringBuilder()
         finalValue.appendLine("Rectangle: ")
+
         val upDownSide = "|".plus("*".repeat(super.boundLimit)).plus("|")
         finalValue.appendLine(upDownSide)
 
-        super.graphics
+        super.compounds()
             .forEach {
-                val inside = it.draw();
+                val inside = it.draw()
                 val missingLength = unsigned(upDownSide.length - inside.length)
                 finalValue.appendLine(padEnd(inside, missingLength, ' '))
             }

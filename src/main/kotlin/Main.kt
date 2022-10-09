@@ -1,29 +1,29 @@
 import composite.graphics.Line
-import composite.graphics.Picture
-import composite.graphics.Rectangle
+import composite.graphics.PictureComposite
+import composite.graphics.RectangleComposite
 import composite.graphics.Text
 
-fun main(args: Array<String>) {
-    val picture = Picture()
-    val firstRectangle = Rectangle()
+fun main() {
+    val pictureCompound = PictureComposite()
+    val firstRectangleComposite = RectangleComposite(parent = pictureCompound)
 
-    firstRectangle.add(Text())
-    firstRectangle.add(Line())
-    firstRectangle.add(Text())
-    firstRectangle.add(Line())
-    firstRectangle.add(Text())
-    firstRectangle.add(Line())
+    firstRectangleComposite.add(Text(parent = firstRectangleComposite))
+    firstRectangleComposite.add(Line(parent = firstRectangleComposite))
+    firstRectangleComposite.add(Text(parent = firstRectangleComposite))
+    firstRectangleComposite.add(Line(parent = firstRectangleComposite))
+    firstRectangleComposite.add(Text(parent = firstRectangleComposite))
+    firstRectangleComposite.add(Line(parent = firstRectangleComposite))
 
-    val secondRectangle = Rectangle()
-    secondRectangle.add(firstRectangle)
-    secondRectangle.add(Line())
-    secondRectangle.add(Text())
-    secondRectangle.add(Line())
+    val secondRectangleComposite = RectangleComposite(parent = firstRectangleComposite)
+    firstRectangleComposite.add(secondRectangleComposite)
 
-    picture.add(firstRectangle)
-    picture.add(secondRectangle)
+    secondRectangleComposite.add(Line(parent = secondRectangleComposite))
+    secondRectangleComposite.add(Text(parent = secondRectangleComposite))
+    secondRectangleComposite.add(Line(parent = secondRectangleComposite))
 
-    println(picture.draw())
+    pictureCompound.add(firstRectangleComposite)
+
+    println(pictureCompound.draw())
 
 
 }

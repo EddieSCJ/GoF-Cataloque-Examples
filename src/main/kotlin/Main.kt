@@ -1,29 +1,15 @@
-import composite.graphics.Line
-import composite.graphics.PictureComposite
-import composite.graphics.RectangleComposite
-import composite.graphics.Text
+import composite.CompositeExample
+import strategy.StrategyExample
 
 fun main() {
-    val pictureCompound = PictureComposite()
-    val firstRectangleComposite = RectangleComposite(parent = pictureCompound)
 
-    firstRectangleComposite.add(Text(parent = firstRectangleComposite))
-    firstRectangleComposite.add(Line(parent = firstRectangleComposite))
-    firstRectangleComposite.add(Text(parent = firstRectangleComposite))
-    firstRectangleComposite.add(Line(parent = firstRectangleComposite))
-    firstRectangleComposite.add(Text(parent = firstRectangleComposite))
-    firstRectangleComposite.add(Line(parent = firstRectangleComposite))
+    // Composite pattern example
+    println("-------------------- Composite pattern example --------------------")
+    CompositeExample.run();
+    println()
 
-    val secondRectangleComposite = RectangleComposite(parent = firstRectangleComposite)
-    firstRectangleComposite.add(secondRectangleComposite)
-
-    secondRectangleComposite.add(Line(parent = secondRectangleComposite))
-    secondRectangleComposite.add(Text(parent = secondRectangleComposite))
-    secondRectangleComposite.add(Line(parent = secondRectangleComposite))
-
-    pictureCompound.add(firstRectangleComposite)
-
-    println(pictureCompound.draw())
-
-
+    println("-------------------- Strategy pattern example --------------------")
+    // Strategy pattern example
+    StrategyExample.run();
+    println()
 }

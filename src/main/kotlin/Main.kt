@@ -1,3 +1,4 @@
+import abstractFactory.AbstractFactoryExample
 import composite.CompositeExample
 import strategy.StrategyExample
 
@@ -12,4 +13,8 @@ fun main() {
     // Strategy pattern example
     StrategyExample.run();
     println()
+
+    println("-------------------- Abstract Factory pattern example --------------------")
+    // Abstract Factory pattern example
+    AbstractFactoryExample.run();
 }
